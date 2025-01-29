@@ -18,8 +18,20 @@ const markup = galleryItems
   .join("");
 
 gallery.insertAdjacentHTML("beforeend", markup);
+scrollPage();
 
 gallery = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
 });
+
+function scrollPage() {
+  const { height: cardHeight } = document
+    .querySelector(".gallery")
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: "smooth",
+  });
+}
